@@ -18,46 +18,32 @@
 
 <p id="result">This text will be replaced </p>
 
-<div >
-    <img id="image1" src="Abbott's_Booby.jpg" width="100" height="100" >
-    <button onclick="swapImage()">Click me</button>
 
+<label>Image changes on click</label><br>
+<div class="container">
+    <img src="Abbott's_Booby.jpg" class="rounded" id="image" alt="Avocet" style="height: 100px;width: 100px;" onclick="swapImage()">
 </div>
 
-<script> 
-
-function swapImage(){
-    useImage = 1;
-    changeImageId = document.getElementById("image1")
-    console.log('changeImageId ---'+changeImageId.src);
-    switch (useImage) {
-        case "Abbott's_Booby.jpg": changeImageId.src = "Gabela_Bushshrike.jpg"; useImage = 1;
-        console.log('changeImageId 1---'+changeImageId);
-        break;
-        case "Gabela_Bushshrike.jpg":changeImageId.src = "images.jpg"; useImage = 2; break;
-        case "images.jpg": changeImageId.src = "Abbott's_Booby.jpg"; useImage = 3; break;
+<script>
+    let useImage = 1;
+    function swapImage() {
+        switch (useImage) {
+            case 1:
+                document.getElementById("image").src = "Abbott's_Booby.jpg";
+                useImage = 2;
+                break;
+            case 2:
+                document.getElementById("image").src = "Gabela_Bushshrike.jpg";
+                useImage = 3;
+                break;
+            case 3:
+                document.getElementById("image").src = "images.jpg";
+                useImage = 1;
+                break;
+            default:
+                break;
+        }
     }
-}
-
-function checkGuess (){
-    console.log("Getting form values")
-    correct = 0;
-    wrong = 0;
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    out = document.getElementById("result")
-
-    if(age == nick){
-        correct = correct +1;
-        alert("You got it right");
-        out.innerHTML = "correct count "+ correct;
-    } else {
-        wrong = wrong +1;
-        alert("Wrong President");
-        out.innerHTML = "wrong count "+ wrong;
-    }
-}
 </script>
-
 </body>
-</html> 
+</html>
